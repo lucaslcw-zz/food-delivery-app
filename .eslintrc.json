@@ -24,6 +24,8 @@
     "react/style-prop-object": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "max-len": "off"
+    "max-len": "off",
+    "import/prefer-default-export": "off",
+    "consistent-return": "off"
   }
 }
