@@ -13,6 +13,7 @@ const AuthRoutes = () => (
       name="SignIn"
       component={SignIn}
       options={{
+        headerLeft: () => null,
         headerTitle: 'Entrar',
         headerTintColor: '#333',
         headerStyle: {
