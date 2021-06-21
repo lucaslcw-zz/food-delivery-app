@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 
+import { setCategories } from '~/store/actions/Menu';
 import { setSession } from '~/store/actions/Authentication';
-import { getSession } from '~/services';
+import { getSession, getCategories } from '~/services';
 
 import { Container } from '~/screens/Splash/styles';
 
@@ -14,13 +15,18 @@ const Splash = () => {
   useEffect(() => {
     (async () => {
       getSession()
-        .then((userInformation) => {
+        .then(async (userInformation) => {
           if (userInformation) {
             dispatch(setSession(userInformation));
-            return navigation.navigate('AppRoutes');
-          }
 
-          navigation.navigate('AuthRoutes');
+            getCategories()
+              .then((categories) => {
+                dispatch(setCategories(categories));
+                navigation.navigate('AppRoutes');
+              });
+          } else {
+            navigation.navigate('AuthRoutes');
+          }
         });
     })();
   }, []);
