@@ -16,7 +16,7 @@ export const Text = styled.Text`
   font-weight: 500;
 `;
 
-export const CartIcon = styled.View`
+export const CartIcon = styled.TouchableOpacity`
   position: absolute;
   right: 0px;
 `;
