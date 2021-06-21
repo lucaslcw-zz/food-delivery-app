@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
+import { setSession } from '~/store/actions/Authentication';
 import { signIn } from '~/services';
 
 import { Button } from '~/components';
@@ -22,13 +24,15 @@ const SignIn = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handleSignIn = () => {
     setIsLoading(true);
 
     signIn(email, password)
       .then((userInformation) => {
-        console.log(userInformation);
+        dispatch(setSession(userInformation));
+        navigation.navigate('AppRoutes');
       })
       .finally(() => setIsLoading(false));
   };
