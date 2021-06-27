@@ -1,4 +1,4 @@
-export interface IProduct {
+export type IProduct = {
   category: string
   description: string
   name: string
@@ -7,59 +7,59 @@ export interface IProduct {
   image: string
 }
 
-export interface IButtonProps {
+export type IButtonProps = {
   action: () => void
   title: string
   isLoading: boolean
 }
 
-export interface ICategoriesListProps {
-  data: ICategories[]
+export type ICategoriesListProps = {
+  data: ICategory[]
 }
 
-export interface ICategories {
+export type ICategory = {
   icon: string
   id: string
   order: number
   title: string
 }
 
-export interface ICategoryListRenderItem {
-  item: ICategories
-  index: number
+export type ICategoryListRenderItem = {
+  item: ICategory
 }
 
-export interface ICategoryCardProps {
+export type ICategoryCardProps = {
   title: string
   icon: string
-  noMargin: boolean
-  widthCalculated: number
 }
 
-export interface IHeaderProps {
+export type IHeaderProps = {
   title: string
   hasHeaderRight: boolean
 }
 
-export interface IContainerStylesProps {
-  width: number
-  noMargin: boolean
-}
-
-export interface IProductCardProps {
+export type IProductCardProps = {
   name: string
   description: string
   price: number
   image: string
 }
 
-export interface IProductsListProps {
+export type IProductsListProps = {
   data: IProduct
   title: string
   length: number
 }
 
-export interface IProductListRenderItem {
+export type IProductListRenderItem = {
   item: IProduct
   index: number
 }
+
+export type IMarginStylesProps = {
+  flexGrow?: number
+}
+
+export type ICategoryFirebaseDoc = Omit<ICategory, 'icon'|'order'|'title'>;
+
+export type IProductFirebaseDoc = Omit<IProduct, 'category'|'description'|'name'|'price'|'image'>;
