@@ -31,6 +31,8 @@
     "arrow-body-style": "off",
     "class-methods-use-this": "off",
     "lines-between-class-members": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "no-param-reassign": "off",
+    "no-return-assign": "off"
   }
 }
