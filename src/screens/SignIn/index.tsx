@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 
 import { setSession } from '~/store/actions/Authentication';
-import { signIn } from '~/services';
+import Firebase from '~/services';
 
 import { Button } from '~/components';
 import {
@@ -17,7 +17,7 @@ import {
   Strong,
 } from '~/screens/SignIn/styles';
 
-const SignIn = () => {
+const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -29,7 +29,7 @@ const SignIn = () => {
   const handleSignIn = () => {
     setIsLoading(true);
 
-    signIn(email, password)
+    Firebase.signIn(email, password)
       .then((userInformation) => {
         dispatch(setSession(userInformation));
         navigation.navigate('AppRoutes');
@@ -46,7 +46,7 @@ const SignIn = () => {
             placeholder="Digite seu email"
             selectionColor="#2D9CDB"
             maxLength={50}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text: string) => setEmail(text)}
             value={email}
           />
         </InputContainer>
@@ -57,7 +57,7 @@ const SignIn = () => {
             selectionColor="#2D9CDB"
             secureTextEntry
             maxLength={12}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text: string) => setPassword(text)}
             value={password}
           />
         </InputContainer>

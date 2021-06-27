@@ -1,12 +1,18 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 
+import { IButtonProps } from '~/@types';
+
 import { Container, Text } from '~/components/Button/styles';
 
-const Button = ({ action, title, isLoading }: any) => (
-  <Container onPress={action} disabled={isLoading && true}>
-    {!isLoading ? <Text>{title}</Text> : <ActivityIndicator size="small" color="white" />}
-  </Container>
-);
+const ButtonComponent: React.FC<IButtonProps> = (props: IButtonProps) => {
+  const { action, title, isLoading } = props;
 
-export default Button;
+  return (
+    <Container onPress={action} disabled={isLoading}>
+      {!isLoading ? <Text>{title}</Text> : <ActivityIndicator size="small" color="white" />}
+    </Container>
+  );
+};
+
+export default ButtonComponent;

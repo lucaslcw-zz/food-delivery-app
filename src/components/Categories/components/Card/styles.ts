@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity<any>`
+import { IContainerStylesProps } from '~/@types';
+
+export const Container = styled.TouchableOpacity<IContainerStylesProps>`
   width: ${(props) => props.width}px;
   height: 100%;
   margin-right: ${(props) => (!props.noMargin ? '10' : '0')}px;

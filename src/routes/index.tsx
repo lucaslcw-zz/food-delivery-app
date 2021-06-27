@@ -9,7 +9,7 @@ import AuthRoutes from '~/routes/auth.routes';
 
 const Stack = createStackNavigator();
 
-const Routes = () => (
+const Routes: React.FC = () => (
   <NavigationContainer>
     <Stack.Navigator
       initialRouteName="Splash"

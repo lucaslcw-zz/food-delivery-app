@@ -9,5 +9,4 @@ export const Margin = styled.View`
   flex: 1;
   padding-left: 15px;
   padding-right: 15px;
-  align-items: center;
 `;

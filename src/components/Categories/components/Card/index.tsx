@@ -2,11 +2,13 @@ import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
+import { ICategoryCardProps } from '~/@types';
+
 import { setCategory } from '~/store/actions/Menu';
 
 import { Container, Title } from '~/components/Categories/components/Card/styles';
 
-const Card = (props: any) => {
+const CardComponent: React.FC<ICategoryCardProps> = (props: ICategoryCardProps) => {
   const {
     title,
     icon,
@@ -28,4 +30,4 @@ const Card = (props: any) => {
   );
 };
 
-export default Card;
+export default CardComponent;

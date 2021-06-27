@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { signUp } from '~/services';
+import Firebase from '~/services';
 
 import { Button } from '~/components';
 import {
@@ -15,7 +15,7 @@ import {
   Strong,
 } from '~/screens/SignUp/styles';
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -33,7 +33,7 @@ const SignUp = () => {
   const handleSignUp = () => {
     setIsLoading(true);
 
-    signUp(name, email, password)
+    Firebase.signUp(name, email, password)
       .then(() => resetFields())
       .finally(() => {
         setIsLoading(false);
@@ -50,7 +50,7 @@ const SignUp = () => {
             placeholder="Digite seu nome"
             selectionColor="#2D9CDB"
             maxLength={20}
-            onChangeText={(text) => setName(text)}
+            onChangeText={(text: string) => setName(text)}
             value={name}
           />
         </InputContainer>
@@ -60,7 +60,7 @@ const SignUp = () => {
             placeholder="Digite seu email"
             selectionColor="#2D9CDB"
             maxLength={50}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text: string) => setEmail(text)}
             value={email}
           />
         </InputContainer>
@@ -71,7 +71,7 @@ const SignUp = () => {
             selectionColor="#2D9CDB"
             secureTextEntry
             maxLength={12}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text: string) => setPassword(text)}
             value={password}
           />
         </InputContainer>
