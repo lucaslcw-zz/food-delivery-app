@@ -1,26 +1,79 @@
-import { auth } from '~/config/Firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
-export const signIn = async (email: string, password: string) => new Promise((resolve, reject) => {
-  auth.signInWithEmailAndPassword(email, password)
-    .then((userInformation) => resolve(userInformation))
-    .catch(() => reject());
-});
+import { ICategoryFirebaseDoc, IProductFirebaseDoc } from '~/@types';
 
-export const signUp = async (name: string, email: string, password: string) => new Promise<void>((resolve, reject) => {
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(({ user }) => {
-      user?.updateProfile({ displayName: name })
-        .then(() => resolve())
+import FirebaseKeys from '~/config/Firebase';
+
+class Firebase {
+  constructor() {
+    if (!firebase.apps.length) firebase.initializeApp(FirebaseKeys);
+  }
+
+  /* Authentication */
+
+  signIn(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(({ user }) => {
+          resolve({ uid: user?.uid, name: user?.displayName, email: user?.email });
+        })
         .catch(() => reject());
-    })
-    .catch(() => reject());
-});
+    });
+  }
 
-export const getSession = async () => new Promise((resolve) => {
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      return resolve({ uid: user.uid, name: user.displayName, email: user.email });
-    }
-    resolve(null);
-  });
-});
+  signUp(name: string, email: string, password: string) {
+    return new Promise<void>((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(({ user }) => {
+          user?.updateProfile({ displayName: name })
+            .then(() => resolve())
+            .catch(() => reject());
+        })
+        .catch(() => reject());
+    });
+  }
+
+  getSession() {
+    return new Promise((resolve) => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          return resolve({ uid: user?.uid, name: user?.displayName, email: user?.email });
+        }
+
+        resolve(null);
+      });
+    });
+  }
+
+  /* Firestore */
+
+  getCategories() {
+    return new Promise((resolve, reject) => {
+      firebase.firestore().collection('categories').orderBy('order', 'asc').get()
+        .then((querySnapshot) => {
+          const categories: ICategoryFirebaseDoc[] = [];
+          querySnapshot.forEach((doc) => categories.push({ ...doc.data(), id: doc.id }));
+
+          resolve(categories);
+        })
+        .catch(() => reject());
+    });
+  }
+
+  getProducts() {
+    return new Promise((resolve, reject) => {
+      firebase.firestore().collection('products').get()
+        .then((querySnapshot) => {
+          const products: IProductFirebaseDoc[] = [];
+          querySnapshot.forEach((doc) => products.push({ ...doc.data(), id: doc.id }));
+
+          resolve(products);
+        })
+        .catch(() => reject());
+    });
+  }
+}
+
+export default new Firebase();
