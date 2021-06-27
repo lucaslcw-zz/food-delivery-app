@@ -17,6 +17,7 @@ const ProductsListComponent: React.FC<IProductsListProps> = (props: IProductsLis
       name={item.name}
       description={item.description}
       price={item.price}
+      image={item.image}
     />
   );
 

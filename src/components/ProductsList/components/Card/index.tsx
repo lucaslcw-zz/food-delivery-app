@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IProductCardProps } from '~/@types';
+import { formatToBrazilianCurrency } from '~/utils/Formatting';
 
 import {
   Container,
@@ -13,7 +14,12 @@ import {
 } from '~/components/ProductsList/components/Card/styles';
 
 const ProductCard: React.FC<IProductCardProps> = (props: IProductCardProps) => {
-  const { name, description, price } = props;
+  const {
+    name,
+    description,
+    price,
+    image,
+  } = props;
 
   return (
     <Container
@@ -25,7 +31,7 @@ const ProductCard: React.FC<IProductCardProps> = (props: IProductCardProps) => {
         elevation: 5,
       }}
     >
-      <Image />
+      <Image source={{ uri: image }} />
       <Information>
         <Content>
           <Name>{name}</Name>
@@ -34,7 +40,7 @@ const ProductCard: React.FC<IProductCardProps> = (props: IProductCardProps) => {
         <Price>
           R$
           {' '}
-          {(price.toFixed(2)).replace('.', ',')}
+          {formatToBrazilianCurrency(price)}
         </Price>
       </Information>
     </Container>
