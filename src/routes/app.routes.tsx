@@ -7,7 +7,12 @@ import Menu from '~/screens/Menu';
 const Tab = createBottomTabNavigator();
 
 const AppRoutes = () => (
-  <Tab.Navigator initialRouteName="Menu">
+  <Tab.Navigator
+    initialRouteName="Menu"
+    tabBarOptions={{
+      activeTintColor: '#2D9CDB',
+    }}
+  >
     <Tab.Screen
       name="Menu"
       component={Menu}
