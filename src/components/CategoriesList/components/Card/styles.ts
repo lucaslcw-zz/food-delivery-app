@@ -1,11 +1,10 @@
 import styled from 'styled-components/native';
 
-import { IContainerStylesProps } from '~/@types';
-
-export const Container = styled.TouchableOpacity<IContainerStylesProps>`
-  width: ${(props) => props.width}px;
+export const Container = styled.TouchableOpacity`
+  min-width: 180px;
+  padding: 0 10px;
   height: 100%;
-  margin-right: ${(props) => (!props.noMargin ? '10' : '0')}px;
+  margin-right: 10px;
   border-radius: 5px;
   background: #2D9CDB;
   align-items: center;

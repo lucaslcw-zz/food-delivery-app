@@ -5,6 +5,7 @@ export const Container = styled.View`
   margin-top: 40px;
   height: 65px;
   margin-bottom: 40px;
+  padding-left: 15px;
 `;
 
 export const List = styled.FlatList.attrs({
