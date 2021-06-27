@@ -3,12 +3,23 @@ import { useSelector } from 'react-redux';
 
 import { IProduct } from '~/@types';
 
-import { Header, CategoriesList, ProductsList } from '~/components';
+import {
+  Header,
+  CategoriesList,
+  ProductModal,
+  CartModal,
+  ProductsList,
+} from '~/components';
 
 import { Container, Margin } from '~/screens/Menu/styles';
 
 const Menu: React.FC = () => {
-  const { categories, typeOfCategory, products } = useSelector((state: any) => state.Menu);
+  const {
+    categories,
+    typeOfCategory,
+    products,
+    productModal: { isVisibled },
+  } = useSelector((state: any) => state.Product);
 
   const productsFiltered = useMemo(() => {
     return products.filter((product: IProduct) => product.category === typeOfCategory);
@@ -27,6 +38,8 @@ const Menu: React.FC = () => {
           length={productsFiltered.length}
         />
       </Margin>
+      {isVisibled && <ProductModal />}
+      <CartModal />
     </Container>
   );
 };
