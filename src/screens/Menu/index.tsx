@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { IProduct } from '~/@types';
 
-import { Header, Categories, List } from '~/components';
+import { Header, CategoriesList, ProductsList } from '~/components';
 
 import { Container, Margin } from '~/screens/Menu/styles';
 
@@ -18,8 +18,8 @@ const Menu: React.FC = () => {
     <Container>
       <Margin>
         <Header title="Cardápio" hasHeaderRight />
-        <Categories data={categories} />
-        <List
+        <CategoriesList data={categories} />
+        <ProductsList
           data={productsFiltered}
           title={typeOfCategory}
           length={productsFiltered.length}
