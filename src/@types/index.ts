@@ -4,6 +4,7 @@ export interface IProduct {
   name: string
   id: string
   price: number
+  image: string
 }
 
 export interface IButtonProps {
@@ -49,6 +50,7 @@ export interface IProductCardProps {
   name: string
   description: string
   price: number
+  image: string
 }
 
 export interface IProductsListProps {
