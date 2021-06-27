@@ -14,6 +14,7 @@ const ProductsListComponent: React.FC<IProductsListProps> = (props: IProductsLis
   const renderItem = ({ item }: IProductListRenderItem) => (
     <Card
       key={item.id}
+      id={item.id}
       name={item.name}
       description={item.description}
       price={item.price}

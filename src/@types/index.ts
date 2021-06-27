@@ -43,6 +43,7 @@ export type IProductCardProps = {
   description: string
   price: number
   image: string
+  id: string
 }
 
 export type IProductsListProps = {

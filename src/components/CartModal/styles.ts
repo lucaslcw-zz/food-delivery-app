@@ -107,3 +107,12 @@ export const ButtonText = styled.Text`
   color: #fff;
   font-weight: 400;
 `;
+
+export const LoadingButton = styled.TouchableOpacity`
+  background: #2D9CDB;
+  padding: 12px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 5px;
+`;

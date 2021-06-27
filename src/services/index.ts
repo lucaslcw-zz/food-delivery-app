@@ -2,7 +2,11 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-import { ICategoryFirebaseDoc, IProductFirebaseDoc } from '~/@types';
+import {
+  ICategoryFirebaseDoc,
+  IProductFirebaseDoc,
+  IProduct,
+} from '~/@types';
 
 import FirebaseKeys from '~/config/Firebase';
 
@@ -71,6 +75,14 @@ class Firebase {
 
           resolve(products);
         })
+        .catch(() => reject());
+    });
+  }
+
+  sendOrder(products: IProduct[], accountUid: string) {
+    return new Promise<void>((resolve, reject) => {
+      firebase.firestore().collection('orders').add({ products, clientUid: accountUid })
+        .then(() => resolve())
         .catch(() => reject());
     });
   }

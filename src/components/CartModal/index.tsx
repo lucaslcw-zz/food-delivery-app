@@ -1,6 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
+import { ActivityIndicator } from 'react-native';
+
+import Firebase from '~/services';
 
 import { IProduct } from '~/@types';
 import { formatToBrazilianCurrency } from '~/utils/Formatting';
@@ -25,10 +28,14 @@ import {
   TrashButton,
   Button,
   ButtonText,
+  LoadingButton,
 } from '~/components/CartModal/styles';
 
 const CartModalComponent: React.FC = () => {
   const { cartModal: { isVisibled, items } } = useSelector((state: any) => state.Cart);
+  const { userInformation } = useSelector((state: any) => state.Authentication);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -41,11 +48,23 @@ const CartModalComponent: React.FC = () => {
     handleCloseCartModal();
   };
 
-  const totalCartValue = useMemo(() => {
-    if (items.length === 1) return items.map((product: IProduct) => product.price);
+  const handleSendOrder = () => {
+    setIsLoading(true);
 
+    const products: IProduct[] = items.map(({ name, price, id }: IProduct) => {
+      return { name, price, productId: id };
+    });
+
+    Firebase.sendOrder(products, userInformation.uid)
+      .finally(() => {
+        setIsLoading(false);
+        handleCleanCart();
+      });
+  };
+
+  const totalCartValue = useMemo(() => {
     if (items.length !== 0) {
-      return items.reduce((acc: IProduct, product: IProduct) => acc.price + product.price);
+      return items.reduce((total: number, product: IProduct) => total += product.price, 0);
     }
 
     return 0;
@@ -82,14 +101,20 @@ const CartModalComponent: React.FC = () => {
               <Image source={{ uri: product.image }} />
             </Card>
           ))}
-          <Button>
-            <ButtonText>Concluir Pedido</ButtonText>
-            <ButtonText>
-              R$
-              {' '}
-              {formatToBrazilianCurrency(totalCartValue)}
-            </ButtonText>
-          </Button>
+          {!isLoading ? (
+            <Button onPress={handleSendOrder}>
+              <ButtonText>Concluir Pedido</ButtonText>
+              <ButtonText>
+                R$
+                {' '}
+                {formatToBrazilianCurrency(totalCartValue)}
+              </ButtonText>
+            </Button>
+          ) : (
+            <LoadingButton disabled>
+              <ActivityIndicator size="small" color="white" />
+            </LoadingButton>
+          )}
         </Scroll>
       </Margin>
     </Container>

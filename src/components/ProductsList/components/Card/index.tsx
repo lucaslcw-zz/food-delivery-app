@@ -22,13 +22,14 @@ const ProductCard: React.FC<IProductCardProps> = (props: IProductCardProps) => {
     description,
     price,
     image,
+    id,
   } = props;
 
   const dispatch = useDispatch();
 
   const handleOpenProductModal = () => {
     dispatch(setContentProductModal({
-      name, description, price, image,
+      name, description, price, image, id,
     }));
   };
 
