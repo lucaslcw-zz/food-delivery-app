@@ -6,7 +6,7 @@ import { ICategoryCardProps } from '~/@types';
 
 import { setCategory } from '~/store/actions/Menu';
 
-import { Container, Title } from '~/components/Categories/components/Card/styles';
+import { Container, Title } from '~/components/CategoriesList/components/Card/styles';
 
 const CardComponent: React.FC<ICategoryCardProps> = (props: ICategoryCardProps) => {
   const {

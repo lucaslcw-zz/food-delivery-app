@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { IListProps, IProduct, IProductListRenderItem } from '~/@types';
+import { IProductsListProps, IProduct, IProductListRenderItem } from '~/@types';
 
-import { Card } from '~/components/List/components';
+import { Card } from '~/components/ProductsList/components';
 
-import { Container, Title, List } from '~/components/List/styles';
+import { Container, Title, List } from '~/components/ProductsList/styles';
 
-const ListComponent: React.FC<IListProps> = (props: IListProps) => {
+const ProductsListComponent: React.FC<IProductsListProps> = (props: IProductsListProps) => {
   const { data, title, length } = props;
 
-  const keyExtractor = () => (item: IProduct) => item.id.toString();
+  const keyExtractor = (item: IProduct) => item.id;
 
-  const renderItem = () => ({ item }: IProductListRenderItem) => (
+  const renderItem = ({ item }: IProductListRenderItem) => (
     <Card
       key={item.id}
       name={item.name}
@@ -38,4 +38,4 @@ const ListComponent: React.FC<IListProps> = (props: IListProps) => {
   );
 };
 
-export default ListComponent;
+export default ProductsListComponent;

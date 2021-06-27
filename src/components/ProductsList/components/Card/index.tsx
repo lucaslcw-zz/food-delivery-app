@@ -10,9 +10,9 @@ import {
   Name,
   Description,
   Price,
-} from '~/components/List/components/Card/styles';
+} from '~/components/ProductsList/components/Card/styles';
 
-const CardComponent: React.FC<IProductCardProps> = (props: IProductCardProps) => {
+const ProductCard: React.FC<IProductCardProps> = (props: IProductCardProps) => {
   const { name, description, price } = props;
 
   return (
@@ -41,4 +41,4 @@ const CardComponent: React.FC<IProductCardProps> = (props: IProductCardProps) =>
   );
 };
 
-export default CardComponent;
+export default ProductCard;

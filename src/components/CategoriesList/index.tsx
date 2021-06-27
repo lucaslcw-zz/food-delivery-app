@@ -1,21 +1,21 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
 
-import { ICategoriesProps, ICategories, IListRenderItem } from '~/@types';
+import { ICategoriesListProps, ICategories, ICategoryListRenderItem } from '~/@types';
 
-import { Card } from '~/components/Categories/components';
+import { Card } from '~/components/CategoriesList/components';
 
-import { Container, List } from '~/components/Categories/styles';
+import { Container, List } from '~/components/CategoriesList/styles';
 
-const CategoriesComponent: React.FC<ICategoriesProps> = (props: ICategoriesProps) => {
+const CategoriesListComponent: React.FC<ICategoriesListProps> = (props: ICategoriesListProps) => {
   const { data } = props;
 
   const { width } = Dimensions.get('screen');
   const widthCalculated: number = ((width - (15 * 2)) - 10) / 2;
 
-  const keyExtractor = (item: ICategories) => item.id.toString();
+  const keyExtractor = (item: ICategories) => item.id;
 
-  const renderItem = ({ item, index }: IListRenderItem) => (
+  const renderItem = ({ item, index }: ICategoryListRenderItem) => (
     <Card
       key={item.id}
       title={item.title}
@@ -42,4 +42,4 @@ const CategoriesComponent: React.FC<ICategoriesProps> = (props: ICategoriesProps
   );
 };
 
-export default CategoriesComponent;
+export default CategoriesListComponent;

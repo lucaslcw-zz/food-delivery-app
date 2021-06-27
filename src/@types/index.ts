@@ -12,7 +12,7 @@ export interface IButtonProps {
   isLoading: boolean
 }
 
-export interface ICategoriesProps {
+export interface ICategoriesListProps {
   data: ICategories[]
 }
 
@@ -23,7 +23,7 @@ export interface ICategories {
   title: string
 }
 
-export interface IListRenderItem {
+export interface ICategoryListRenderItem {
   item: ICategories
   index: number
 }
@@ -51,7 +51,7 @@ export interface IProductCardProps {
   price: number
 }
 
-export interface IListProps {
+export interface IProductsListProps {
   data: IProduct
   title: string
   length: number
