@@ -24,10 +24,12 @@
     "react/style-prop-object": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "max-len": "off",
     "import/prefer-default-export": "off",
     "consistent-return": "off",
     "import/no-extraneous-dependencies": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "arrow-body-style": "off",
+    "class-methods-use-this": "off",
+    "lines-between-class-members": "off"
   }
 }
