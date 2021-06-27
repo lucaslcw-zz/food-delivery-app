@@ -1,7 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { IProductCardProps } from '~/@types';
 import { formatToBrazilianCurrency } from '~/utils/Formatting';
+
+import { setContentProductModal } from '~/store/actions/Product';
 
 import {
   Container,
@@ -21,8 +24,17 @@ const ProductCard: React.FC<IProductCardProps> = (props: IProductCardProps) => {
     image,
   } = props;
 
+  const dispatch = useDispatch();
+
+  const handleOpenProductModal = () => {
+    dispatch(setContentProductModal({
+      name, description, price, image,
+    }));
+  };
+
   return (
     <Container
+      onPress={handleOpenProductModal}
       style={{
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
