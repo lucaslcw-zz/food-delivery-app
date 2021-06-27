@@ -61,6 +61,13 @@ export type IMarginStylesProps = {
   flexGrow?: number
 }
 
+export type IProductCardCartProps = {
+  name: string
+  price: number
+  image: string
+  index: number
+}
+
 export type ICategoryFirebaseDoc = Omit<ICategory, 'icon'|'order'|'title'>;
 
 export type IProductFirebaseDoc = Omit<IProduct, 'category'|'description'|'name'|'price'|'image'>;

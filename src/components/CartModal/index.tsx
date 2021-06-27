@@ -8,8 +8,9 @@ import Firebase from '~/services';
 import { IProduct } from '~/@types';
 import { formatToBrazilianCurrency } from '~/utils/Formatting';
 
-import { closeCartModal, cleanCart, removeProductCart } from '~/store/actions/Cart';
+import { closeCartModal, cleanCart } from '~/store/actions/Cart';
 
+import { Card, EmptyList } from '~/components/CartModal/components';
 import {
   Container,
   Margin,
@@ -19,13 +20,6 @@ import {
   Title,
   ClearButton,
   ClearButtonText,
-  Card,
-  Image,
-  Information,
-  Name,
-  Row,
-  Price,
-  TrashButton,
   Button,
   ButtonText,
   LoadingButton,
@@ -40,8 +34,6 @@ const CartModalComponent: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleCloseCartModal = () => dispatch(closeCartModal());
-
-  const handleRemoveProductCart = (index: number) => dispatch(removeProductCart(index));
 
   const handleCleanCart = () => {
     dispatch(cleanCart());
@@ -83,25 +75,17 @@ const CartModalComponent: React.FC = () => {
           </ClearButton>
         </Header>
         <Scroll>
-          {items.length !== 0 && items.map((product: IProduct, index: number) => (
-            <Card key={index}>
-              <Information>
-                <Name>{product.name}</Name>
-                <Row>
-                  <Price>
-                    R$
-                    {' '}
-                    {formatToBrazilianCurrency(product.price)}
-                  </Price>
-                  <TrashButton onPress={() => handleRemoveProductCart(index)}>
-                    <Feather name="trash-2" size={16} color="#fff" />
-                  </TrashButton>
-                </Row>
-              </Information>
-              <Image source={{ uri: product.image }} />
-            </Card>
-          ))}
-          {!isLoading ? (
+          {items.length !== 0 ? (
+            items.map((product: IProduct, index: number) => (
+              <Card
+                key={index}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                index={index}
+              />
+            ))) : <EmptyList />}
+          {!isLoading && items.length !== 0 && (
             <Button onPress={handleSendOrder}>
               <ButtonText>Concluir Pedido</ButtonText>
               <ButtonText>
@@ -110,7 +94,8 @@ const CartModalComponent: React.FC = () => {
                 {formatToBrazilianCurrency(totalCartValue)}
               </ButtonText>
             </Button>
-          ) : (
+          )}
+          {isLoading && (
             <LoadingButton disabled>
               <ActivityIndicator size="small" color="white" />
             </LoadingButton>
