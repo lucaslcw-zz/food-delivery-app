@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 import Authentication from '~/store/reducers/Authentication';
-import Menu from '~/store/reducers/Menu';
+import Product from '~/store/reducers/Product';
+import Cart from '~/store/reducers/Cart';
 
 const RootReducer = combineReducers({
   Authentication,
-  Menu,
+  Product,
+  Cart,
 });
 
 export default RootReducer;

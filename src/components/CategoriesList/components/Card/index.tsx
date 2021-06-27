@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { ICategoryCardProps } from '~/@types';
 
-import { setCategory } from '~/store/actions/Menu';
+import { setCategory } from '~/store/actions/Product';
 
 import { Container, Title } from '~/components/CategoriesList/components/Card/styles';
 

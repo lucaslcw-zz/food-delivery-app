@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 
-import { setCategories, setProducts } from '~/store/actions/Menu';
+import { setCategories, setProducts } from '~/store/actions/Product';
 import { setSession } from '~/store/actions/Authentication';
 import Firebase from '~/services';
 
