@@ -18,7 +18,9 @@ const Menu: React.FC = () => {
     <Container>
       <Margin>
         <Header title="Cardápio" hasHeaderRight />
-        <CategoriesList data={categories} />
+      </Margin>
+      <CategoriesList data={categories} />
+      <Margin flexGrow={1}>
         <ProductsList
           data={productsFiltered}
           title={typeOfCategory}
