@@ -56,5 +56,5 @@ export const Button = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   color: #fff;
-  font-weight: 400;
+  font-weight: 600;
 `;
