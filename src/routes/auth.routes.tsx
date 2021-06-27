@@ -7,7 +7,7 @@ import SignUp from '~/screens/SignUp';
 
 const Stack = createStackNavigator();
 
-const AuthRoutes = () => (
+const AuthRoutes: React.FC = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="SignIn"

@@ -6,7 +6,7 @@ import Menu from '~/screens/Menu';
 
 const Tab = createBottomTabNavigator();
 
-const AppRoutes = () => (
+const AppRoutes: React.FC = () => (
   <Tab.Navigator
     initialRouteName="Menu"
     tabBarOptions={{
@@ -18,7 +18,13 @@ const AppRoutes = () => (
       component={Menu}
       options={{
         title: 'Cardápio',
-        tabBarIcon: ({ color, size }: any) => <Ionicons name="fast-food" size={size} color={color} />,
+        tabBarIcon: ({ color, size }: { color: string, size: number }) => (
+          <Ionicons
+            name="fast-food"
+            size={size}
+            color={color}
+          />
+        ),
       }}
     />
     <Tab.Screen
@@ -26,7 +32,13 @@ const AppRoutes = () => (
       component={Menu}
       options={{
         title: 'Pedidos',
-        tabBarIcon: ({ color, size }: any) => <Entypo name="list" size={size} color={color} />,
+        tabBarIcon: ({ color, size }: { color: string, size: number }) => (
+          <Entypo
+            name="list"
+            size={size}
+            color={color}
+          />
+        ),
       }}
     />
     <Tab.Screen
@@ -34,7 +46,13 @@ const AppRoutes = () => (
       component={Menu}
       options={{
         title: 'Ajustes',
-        tabBarIcon: ({ color, size }: any) => <Ionicons name="ios-settings" size={size} color={color} />,
+        tabBarIcon: ({ color, size }: { color: string, size: number }) => (
+          <Ionicons
+            name="ios-settings"
+            size={size}
+            color={color}
+          />
+        ),
       }}
     />
   </Tab.Navigator>
