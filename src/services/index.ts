@@ -52,6 +52,13 @@ class Firebase {
     });
   }
 
+  signOut() {
+    return new Promise<void>((resolve) => {
+      firebase.auth().signOut()
+        .then(() => resolve());
+    });
+  }
+
   /* Firestore */
 
   getCategories() {
@@ -93,7 +100,6 @@ class Firebase {
       firebase.firestore().collection('orders').where('clientUid', '==', accountUid).limit(10).get()
         .then((querySnapshot) => {
           const orders: any = [];
-
           querySnapshot.forEach((doc) => orders.push({ ...doc.data(), id: doc.id }));
 
           resolve(orders);

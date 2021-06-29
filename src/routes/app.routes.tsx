@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Menu from '~/screens/Menu';
 import Orders from '~/screens/Orders';
+import Settings from '~/screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,11 +21,7 @@ const AppRoutes: React.FC = () => (
       options={{
         title: 'Cardápio',
         tabBarIcon: ({ color, size }: { color: string, size: number }) => (
-          <Ionicons
-            name="fast-food"
-            size={size}
-            color={color}
-          />
+          <Ionicons name="fast-food" size={size} color={color} />
         ),
       }}
     />
@@ -34,25 +31,17 @@ const AppRoutes: React.FC = () => (
       options={{
         title: 'Pedidos',
         tabBarIcon: ({ color, size }: { color: string, size: number }) => (
-          <Entypo
-            name="list"
-            size={size}
-            color={color}
-          />
+          <Entypo name="list" size={size} color={color} />
         ),
       }}
     />
     <Tab.Screen
       name="Settings"
-      component={Menu}
+      component={Settings}
       options={{
         title: 'Ajustes',
         tabBarIcon: ({ color, size }: { color: string, size: number }) => (
-          <Ionicons
-            name="ios-settings"
-            size={size}
-            color={color}
-          />
+          <Ionicons name="settings-sharp" size={size} color={color} />
         ),
       }}
     />

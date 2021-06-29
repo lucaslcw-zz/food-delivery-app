@@ -1,3 +1,4 @@
+import { CommonActions } from '@react-navigation/native';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import {
@@ -34,4 +35,13 @@ export const displayCurrentStatus = (status: string) => {
     default:
       return '';
   }
+};
+
+export const resetStackNavigation = (navigation: any) => {
+  navigation.dispatch(
+    CommonActions.reset({
+      index: 0,
+      routes: [{ name: 'AuthRoutes' }],
+    }),
+  );
 };
