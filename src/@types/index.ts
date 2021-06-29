@@ -7,6 +7,13 @@ export type IProduct = {
   image: string
 }
 
+export type IOrder = {
+  createdAt: number
+  status: string
+  products: IOrder[]
+  id: string
+}
+
 export type IButtonProps = {
   action: () => void
   title: string
@@ -35,7 +42,7 @@ export type ICategoryCardProps = {
 
 export type IHeaderProps = {
   title: string
-  hasHeaderRight: boolean
+  hasHeaderRight?: boolean
 }
 
 export type IProductCardProps = {
@@ -46,15 +53,30 @@ export type IProductCardProps = {
   id: string
 }
 
+export type IOrderCardProps = {
+  createdAt: number
+  status: string
+  id: string
+  products: IOrder[]
+}
+
 export type IProductsListProps = {
   data: IProduct
   title: string
   length: number
 }
 
+export type IOrdersListProps = {
+  data: IOrder[]
+}
+
 export type IProductListRenderItem = {
   item: IProduct
   index: number
+}
+
+export type IOrderListRenderItem = {
+  item: IOrder
 }
 
 export type IMarginStylesProps = {
