@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
+import { Ionicons } from '@expo/vector-icons';
 
 import { setCategories, setProducts } from '~/store/actions/Product';
 import { setSession } from '~/store/actions/Authentication';
@@ -38,7 +39,9 @@ const Splash: React.FC = () => {
   }, []);
 
   return (
-    <Container />
+    <Container>
+      <Ionicons name="fast-food" size={100} color="#fff" style={{ marginBottom: 25 }} />
+    </Container>
   );
 };
 
