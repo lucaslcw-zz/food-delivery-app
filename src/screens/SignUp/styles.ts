@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 `;
 
 export const Margin = styled.View`
@@ -15,24 +15,24 @@ export const Margin = styled.View`
 
 export const InputContainer = styled.View`
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 `;
 
 export const Label = styled.Text`
   font-size: 16px;
-  margin-bottom: 10px;
   color: #333333;
   font-weight: 400;
 `;
 
 export const Input = styled.TextInput`
-  background: #ffffff;
-  padding: 10px;
+  background: transparent;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #EEE;
+  border-bottom-width: 1px;
+  border-bottom-color: #2D9CDB;
   color: #333333;
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 export const Redirect = styled.TouchableOpacity``;

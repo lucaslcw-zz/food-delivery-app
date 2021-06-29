@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import Firebase from '~/services';
 
@@ -44,6 +45,7 @@ const SignUp: React.FC = () => {
   return (
     <Container>
       <Margin>
+        <Ionicons name="fast-food" size={100} color="#2D9CDB" style={{ marginBottom: 25 }} />
         <InputContainer>
           <Label>Nome</Label>
           <Input

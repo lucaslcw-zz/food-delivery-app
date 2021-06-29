@@ -17,7 +17,7 @@ const AuthRoutes: React.FC = () => (
         headerTitle: 'Entrar',
         headerTintColor: '#333',
         headerStyle: {
-          backgroundColor: '#f7f7f7',
+          backgroundColor: '#ffff',
           shadowRadius: 0,
           shadowOffset: { width: 0, height: 0 },
         },
@@ -30,10 +30,11 @@ const AuthRoutes: React.FC = () => (
         headerTitle: 'Cadastro',
         headerTintColor: '#333',
         headerStyle: {
-          backgroundColor: '#f7f7f7',
+          backgroundColor: '#ffff',
           shadowRadius: 0,
           shadowOffset: { width: 0, height: 0 },
         },
+        headerLeft: () => null,
       }}
     />
   </Stack.Navigator>
