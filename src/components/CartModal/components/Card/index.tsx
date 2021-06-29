@@ -3,7 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
 import { IProductCardCartProps } from '~/@types';
-import { formatToBrazilianCurrency } from '~/utils/Formatting';
+import { formatToBrazilianCurrency } from '~/utils';
 
 import { removeProductCart } from '~/store/actions/Cart';
 

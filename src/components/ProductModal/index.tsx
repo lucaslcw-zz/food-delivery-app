@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
 
-import { formatToBrazilianCurrency } from '~/utils/Formatting';
+import { formatToBrazilianCurrency } from '~/utils';
 
 import { addProductCart } from '~/store/actions/Cart';
 import { deleteContentProductModal } from '~/store/actions/Product';

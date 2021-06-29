@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { IProductCardProps } from '~/@types';
-import { formatToBrazilianCurrency } from '~/utils/Formatting';
+import { formatToBrazilianCurrency } from '~/utils';
 
 import { setContentProductModal } from '~/store/actions/Product';
 

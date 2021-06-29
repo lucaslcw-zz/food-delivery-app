@@ -6,7 +6,7 @@ import { ActivityIndicator } from 'react-native';
 import Firebase from '~/services';
 
 import { IProduct } from '~/@types';
-import { formatToBrazilianCurrency } from '~/utils/Formatting';
+import { formatToBrazilianCurrency } from '~/utils';
 
 import { closeCartModal, cleanCart } from '~/store/actions/Cart';
 
