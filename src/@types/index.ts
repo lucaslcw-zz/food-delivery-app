@@ -90,6 +90,15 @@ export type IProductCardCartProps = {
   index: number
 }
 
+export type ILineStylesProps = {
+  marginTop: number
+  marginBottom: number
+}
+
+export type IButtonStylesProps = {
+  opacity: number
+}
+
 export type ICategoryFirebaseDoc = Omit<ICategory, 'icon'|'order'|'title'>;
 
 export type IProductFirebaseDoc = Omit<IProduct, 'category'|'description'|'name'|'price'|'image'>;

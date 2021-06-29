@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import { ILineStylesProps, IButtonStylesProps } from '~/@types';
+
 export const Container = styled.View`
   width: 100%;
   padding: 20px;
@@ -22,12 +24,12 @@ export const CreatedAt = styled.Text`
   font-size: 14px;
 `;
 
-export const Line = styled.View<any>`
+export const Line = styled.View<ILineStylesProps>`
   background-color: #DDD;
   width: 100%;
   height: 0.5px;
-  margin-top: ${(props) => props.marginTop || 0}px;
-  margin-bottom: ${(props) => props.marginBottom || 0}px;
+  margin-top: ${(props) => props.marginTop}px;
+  margin-bottom: ${(props) => props.marginBottom}px;
 `;
 
 export const StatusContainer = styled.View`
@@ -78,7 +80,7 @@ export const ButtonContainer = styled.View`
   flex-direction: row;
 `;
 
-export const Button = styled.TouchableOpacity<any>`
+export const Button = styled.TouchableOpacity<IButtonStylesProps>`
   width: 45%;
   opacity: ${(props) => props.opacity || 1};
 `;
