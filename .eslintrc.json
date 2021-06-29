@@ -33,6 +33,7 @@
     "lines-between-class-members": "off",
     "react/no-array-index-key": "off",
     "no-param-reassign": "off",
-    "no-return-assign": "off"
+    "no-return-assign": "off",
+    "newline-per-chained-call": "off"
   }
 }
