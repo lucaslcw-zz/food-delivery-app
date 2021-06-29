@@ -15,14 +15,14 @@ const Splash: React.FC = () => {
   useEffect(() => {
     (async () => {
       Firebase.getSession()
-        .then(async (userInformation) => {
+        .then(async (userInformation: any) => {
           if (userInformation) {
-            dispatch(setSession(userInformation));
-
             try {
+              const orders = await Firebase.getOrders(userInformation.uid);
               const categories = await Firebase.getCategories();
               const products = await Firebase.getProducts();
 
+              dispatch(setSession({ ...userInformation, orders }));
               dispatch(setCategories(categories));
               dispatch(setProducts(products));
             } catch (error) {
