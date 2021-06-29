@@ -3,6 +3,7 @@ import { Ionicons, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Menu from '~/screens/Menu';
+import Orders from '~/screens/Orders';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ const AppRoutes: React.FC = () => (
     />
     <Tab.Screen
       name="Ordered"
-      component={Menu}
+      component={Orders}
       options={{
         title: 'Pedidos',
         tabBarIcon: ({ color, size }: { color: string, size: number }) => (
