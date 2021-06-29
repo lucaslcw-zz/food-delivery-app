@@ -1,6 +1,6 @@
 # Food Delivery App 🥙
 
-Aplicativo de entrega de comida em geral, voltado especialmente para um restaurante fictício particular. Desenvolvido com Expo, Styled Components, Typescript, Redux e Firebase.
+Aplicativo de entrega de comidas em geral, voltado especialmente para um restaurante fictício particular. Desenvolvido com Expo, Styled Components, Typescript, Redux e Firebase.
 
 ## Funcionalidades
 
