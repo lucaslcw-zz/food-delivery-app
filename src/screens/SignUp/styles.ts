@@ -5,12 +5,21 @@ export const Container = styled.SafeAreaView`
   background-color: #ffffff;
 `;
 
-export const Margin = styled.View`
+export const Margin = styled.ScrollView.attrs({
+  paddingRight: 15,
+  paddingLeft: 15,
+  justifyContent: 'center',
+})`
   flex: 1;
-  padding-left: 15px;
-  padding-right: 15px;
+`;
+
+export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
+  flex: 1;
+`;
+
+export const LogoContainer = styled.View`
+  width: 100%;
   align-items: center;
-  justify-content: center;
 `;
 
 export const InputContainer = styled.View`
@@ -40,6 +49,7 @@ export const Redirect = styled.TouchableOpacity``;
 export const RedirectText = styled.Text`
   font-size: 16px;
   color: #333333;
+  text-align: center;
   font-weight: 400;
 `;
 

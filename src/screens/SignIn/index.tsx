@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 import { setSession } from '~/store/actions/Authentication';
 import Firebase from '~/services';
@@ -10,6 +11,8 @@ import { Button } from '~/components';
 import {
   Container,
   Margin,
+  KeyboardAvoidingView,
+  LogoContainer,
   InputContainer,
   Label,
   Input,
@@ -41,36 +44,40 @@ const SignIn: React.FC = () => {
   return (
     <Container>
       <Margin>
-        <Ionicons name="fast-food" size={100} color="#2D9CDB" style={{ marginBottom: 25 }} />
-        <InputContainer>
-          <Label>Email</Label>
-          <Input
-            placeholder="Digite seu email"
-            selectionColor="#2D9CDB"
-            maxLength={50}
-            onChangeText={(text: string) => setEmail(text)}
-            value={email}
-          />
-        </InputContainer>
-        <InputContainer>
-          <Label>Senha</Label>
-          <Input
-            placeholder="Digite sua senha"
-            selectionColor="#2D9CDB"
-            secureTextEntry
-            maxLength={12}
-            onChangeText={(text: string) => setPassword(text)}
-            value={password}
-          />
-        </InputContainer>
-        <Button action={handleSignIn} isLoading={isLoading} title="Entrar" />
-        <Redirect onPress={() => navigation.navigate('SignUp')}>
-          <RedirectText>
-            Ainda não tem conta?
-            {' '}
-            <Strong>Cadastre-se agora!</Strong>
-          </RedirectText>
-        </Redirect>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'position' : 'height'} keyboardVerticalOffset={230}>
+          <LogoContainer>
+            <Ionicons name="fast-food" size={100} color="#2D9CDB" style={{ marginBottom: 25 }} />
+          </LogoContainer>
+          <InputContainer>
+            <Label>Email</Label>
+            <Input
+              placeholder="Digite seu email"
+              selectionColor="#2D9CDB"
+              maxLength={50}
+              onChangeText={(text: string) => setEmail(text)}
+              value={email}
+            />
+          </InputContainer>
+          <InputContainer>
+            <Label>Senha</Label>
+            <Input
+              placeholder="Digite sua senha"
+              selectionColor="#2D9CDB"
+              secureTextEntry
+              maxLength={12}
+              onChangeText={(text: string) => setPassword(text)}
+              value={password}
+            />
+          </InputContainer>
+          <Button action={handleSignIn} isLoading={isLoading} title="Entrar" />
+          <Redirect onPress={() => navigation.navigate('SignUp')}>
+            <RedirectText>
+              Ainda não tem conta?
+              {' '}
+              <Strong>Cadastre-se agora!</Strong>
+            </RedirectText>
+          </Redirect>
+        </KeyboardAvoidingView>
       </Margin>
     </Container>
   );
