@@ -7,7 +7,7 @@ Aplicativo de entrega de comidas em geral, voltado especialmente para um restaur
 - Cadastro de um usuário com nome, email e senha.
 - Listagem de produtos filtrados por categorias.
 - Adição de variados produtos no carrinho e finalização do pedido.
-- Listagem os últimos 10 pedidos, contendo informações e ações complementares, possibilitando o acompanhamento.
+- Listagem dos últimos 10 pedidos, contendo informações e ações complementares, possibilitando o acompanhamento.
 - Envio de notificação para o usuário de acordo com a alteração do status do pedido.
 
 ## Telas
