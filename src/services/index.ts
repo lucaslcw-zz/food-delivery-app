@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+import { ORDER_CANCELED } from '~/constants/Status';
 import {
   ICategoryFirebaseDoc,
   IProductFirebaseDoc,
@@ -81,9 +82,29 @@ class Firebase {
 
   sendOrder(products: IProduct[], accountUid: string) {
     return new Promise<void>((resolve, reject) => {
-      firebase.firestore().collection('orders').add({ products, clientUid: accountUid })
+      firebase.firestore().collection('orders').add({ products, clientUid: accountUid, createdAt: new Date().getTime() })
         .then(() => resolve())
         .catch(() => reject());
+    });
+  }
+
+  getOrders(accountUid: string) {
+    return new Promise<void>((resolve) => {
+      firebase.firestore().collection('orders').where('clientUid', '==', accountUid).limit(10).get()
+        .then((querySnapshot) => {
+          const orders: any = [];
+
+          querySnapshot.forEach((doc) => orders.push({ ...doc.data(), id: doc.id }));
+
+          resolve(orders);
+        });
+    });
+  }
+
+  cancelOrderStatus(orderId: string) {
+    return new Promise<void>((resolve) => {
+      firebase.firestore().collection('orders').doc(orderId).update({ status: ORDER_CANCELED })
+        .then(() => resolve());
     });
   }
 }
