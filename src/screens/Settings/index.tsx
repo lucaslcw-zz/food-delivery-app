@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 import Firebase from '~/services';
 
@@ -33,6 +34,7 @@ const Settings: React.FC = () => {
 
   return (
     <Container>
+      <StatusBar barStyle="dark-content" />
       <Margin>
         <Header title="Ajustes" />
       </Margin>

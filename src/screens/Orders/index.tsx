@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { StatusBar } from 'react-native';
 
 import { Header, OrdersList } from '~/components';
 
@@ -10,6 +11,7 @@ const Orders: React.FC = () => {
 
   return (
     <Container>
+      <StatusBar barStyle="dark-content" />
       <Margin>
         <Header title="Pedidos" />
       </Margin>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
-import { Platform } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 
 import { setSession } from '~/store/actions/Authentication';
 import Firebase from '~/services';
@@ -43,6 +43,7 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
+      <StatusBar barStyle="dark-content" />
       <Margin>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'position' : 'height'} keyboardVerticalOffset={230}>
           <LogoContainer>

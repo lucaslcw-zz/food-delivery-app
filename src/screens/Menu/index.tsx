@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { StatusBar } from 'react-native';
 
 import { IProduct } from '~/@types';
 
@@ -27,6 +28,7 @@ const Menu: React.FC = () => {
 
   return (
     <Container>
+      <StatusBar barStyle="light-content" />
       <Margin>
         <Header title="Cardápio" hasHeaderRight />
       </Margin>
