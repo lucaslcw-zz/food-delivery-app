@@ -2,6 +2,8 @@
 
 Aplicativo de entrega de comidas em geral, voltado especialmente para um restaurante fictício particular. Desenvolvido com Expo, Styled Components, Typescript, Redux e Firebase.
 
+[Assista o preview](https://youtu.be/W0SB1bbgJEg)
+
 ## Funcionalidades
 
 - Cadastro de um usuário com nome, email e senha.
